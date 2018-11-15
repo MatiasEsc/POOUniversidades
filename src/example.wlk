@@ -67,7 +67,7 @@ class Empresa{
 	var property profesionales = []
 	var property uniformadoras = []
 	
-	method agregarProfecional(prof){
+	method agregarProfesional(prof){
 		profesionales.add(prof)
 	}
 	
@@ -76,12 +76,9 @@ class Empresa{
 		return honorario
 	}
 	
-	method profecionalesCaros(){
+	method profesionalesCaros(){
 		var profcaro =  profesionales.filter({prof => prof.honorario() > honorario})
-			return profcaro.size()
-		}
-		
-		
+			return profcaro.size()}
 	method UniversidadesFormadoras(){
 		var uniFor = profesionales.map{prof => prof.universidad().nombre()}
 		return uniFor.asSet() 
@@ -94,12 +91,13 @@ class Empresa{
 	}
 	
 	method ProvinciaCubierta(prov){
-		var uniFor = profesionales.map{prof => prof.provincia()}
-		return uniFor.asSet().contains(prov)
+		var proFor = profesionales.map{prof => prof.provincia()}
+		return proFor.asSet().contains(prov)
 	}
 	
-	method cuantosProfecionalesEstudiaronEn(){
-		
+	method cuantosProfesionalesEstudiaronEn(uni){
+		var uniEst = profesionales.filter{prof => prof.universidad().nombre() == uni}
+		return uniEst.asSet().size()
 	}
 	
 }
